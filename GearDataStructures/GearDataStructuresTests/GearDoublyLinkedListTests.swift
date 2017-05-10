@@ -20,8 +20,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-// https://github.com/Quick/Quick
-
 import XCTest
 
 @testable import GearDataStructures
@@ -398,7 +396,7 @@ extension GearDoublyLinkedListTests {
     
     func testInsertArrayPerformance() {
         
-        let numberOfElements = 100000
+        let numberOfElements = 10000
         
         measure {
             
@@ -413,7 +411,7 @@ extension GearDoublyLinkedListTests {
     
     func testInsertListPerformance() {
         
-        let numberOfElements = 100000
+        let numberOfElements = 10000
 
         measure {
             
@@ -423,6 +421,24 @@ extension GearDoublyLinkedListTests {
                 _ = linkedList.append(i)
             }
         }
+    }
+}
+
+extension GearDoublyLinkedListTests {
+    
+    func testCopyOnWrite() {
+        
+        var linkedList = GearDoublyLinkedList<Int>()
+        _ = linkedList.append(1)
+        _ = linkedList.append(2)
+        
+        var linkedListCopy = linkedList
+        
+        XCTAssertTrue(linkedList.head === linkedListCopy.head)
+        
+        _ = linkedListCopy.append(3)
+        
+        XCTAssertFalse(linkedList.head === linkedListCopy.head)
     }
 }
 

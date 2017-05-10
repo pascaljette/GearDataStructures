@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		F7C09F621E78DE5600E76BBA /* GearDataStructures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C09F581E78DE5600E76BBA /* GearDataStructures.framework */; };
-		F7C09F671E78DE5600E76BBA /* GearDataStructuresTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C09F661E78DE5600E76BBA /* GearDataStructuresTests.swift */; };
 		F7C09F691E78DE5600E76BBA /* GearDataStructures.h in Headers */ = {isa = PBXBuildFile; fileRef = F7C09F5B1E78DE5600E76BBA /* GearDataStructures.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F7C09F731E78DE9C00E76BBA /* GearDoublyLinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C09F721E78DE9C00E76BBA /* GearDoublyLinkedList.swift */; };
 		F7C09F751E78DFEE00E76BBA /* GearQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C09F741E78DFEE00E76BBA /* GearQueue.swift */; };
 		F7C09F771E78E09E00E76BBA /* GearDoublyLinkedListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C09F761E78E09E00E76BBA /* GearDoublyLinkedListTests.swift */; };
+		F7E9048D1EC2D94200DF62A1 /* GearQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E9048C1EC2D94200DF62A1 /* GearQueueTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,11 +30,11 @@
 		F7C09F5B1E78DE5600E76BBA /* GearDataStructures.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GearDataStructures.h; sourceTree = "<group>"; };
 		F7C09F5C1E78DE5600E76BBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F7C09F611E78DE5600E76BBA /* GearDataStructuresTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GearDataStructuresTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F7C09F661E78DE5600E76BBA /* GearDataStructuresTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GearDataStructuresTests.swift; sourceTree = "<group>"; };
 		F7C09F681E78DE5600E76BBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F7C09F721E78DE9C00E76BBA /* GearDoublyLinkedList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GearDoublyLinkedList.swift; sourceTree = "<group>"; };
 		F7C09F741E78DFEE00E76BBA /* GearQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GearQueue.swift; sourceTree = "<group>"; };
 		F7C09F761E78E09E00E76BBA /* GearDoublyLinkedListTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GearDoublyLinkedListTests.swift; sourceTree = "<group>"; };
+		F7E9048C1EC2D94200DF62A1 /* GearQueueTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GearQueueTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,9 +88,9 @@
 		F7C09F651E78DE5600E76BBA /* GearDataStructuresTests */ = {
 			isa = PBXGroup;
 			children = (
-				F7C09F661E78DE5600E76BBA /* GearDataStructuresTests.swift */,
 				F7C09F681E78DE5600E76BBA /* Info.plist */,
 				F7C09F761E78E09E00E76BBA /* GearDoublyLinkedListTests.swift */,
+				F7E9048C1EC2D94200DF62A1 /* GearQueueTests.swift */,
 			);
 			path = GearDataStructuresTests;
 			sourceTree = "<group>";
@@ -217,8 +217,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7E9048D1EC2D94200DF62A1 /* GearQueueTests.swift in Sources */,
 				F7C09F771E78E09E00E76BBA /* GearDoublyLinkedListTests.swift in Sources */,
-				F7C09F671E78DE5600E76BBA /* GearDataStructuresTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,6 +418,7 @@
 				F7C09F6E1E78DE5600E76BBA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F7C09F6F1E78DE5600E76BBA /* Build configuration list for PBXNativeTarget "GearDataStructuresTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +427,7 @@
 				F7C09F711E78DE5600E76BBA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

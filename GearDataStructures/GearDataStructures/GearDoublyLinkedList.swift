@@ -43,7 +43,6 @@ public final class GearDoublyLinkedListNode<Element> {
     /// - parameter owner: The linked list owning this node.
     /// - parameter element: The value associated with the node.
     fileprivate init(owner: GearDoublyLinkedListImplementation<Element>, element: Element?) {
-        
         self.owner = owner
         self.element = element
     }
@@ -129,7 +128,6 @@ extension GearDoublyLinkedListImplementation {
     var count: Int {
         
         guard let _ = tail else {
-            
             return 0
         }
         
@@ -202,13 +200,11 @@ extension GearDoublyLinkedListImplementation {
         
         // If the list is empty
         guard let _ = tail else {
-            
             return nil
         }
         
         // If the node comes from a different list
         if node.owner !== self {
-            
             throw GearDoublyLinkedListException.nodeNotOwnedByThisList
         }
         
@@ -222,7 +218,6 @@ extension GearDoublyLinkedListImplementation {
             tail = newNode
             
         } else {
-            
             newNode.next = node.next
         }
         
@@ -237,13 +232,11 @@ extension GearDoublyLinkedListImplementation {
         
         // If the list is empty.
         guard let _ = tail else {
-            
             return nil
         }
         
         // If the node comes from another list.
         if node.owner !== self {
-            
             throw GearDoublyLinkedListException.nodeNotOwnedByThisList
         }
         
@@ -256,7 +249,6 @@ extension GearDoublyLinkedListImplementation {
             head = newNode
             
         } else {
-            
             newNode.previous = node.previous
         }
         
@@ -281,7 +273,6 @@ extension GearDoublyLinkedListImplementation where Element: Comparable {
         while currentNode != nil {
             
             if currentNode?.element == element {
-                
                 return currentNode
             }
             
@@ -299,7 +290,6 @@ extension GearDoublyLinkedListImplementation where Element: Comparable {
         while currentNode != nil {
             
             if currentNode?.element == element {
-                
                 return currentNode
             }
             
@@ -321,22 +311,18 @@ extension GearDoublyLinkedListImplementation {
     func removeNode(_ node: NodeType) throws -> Bool {
         
         if node.owner !== self {
-            
             throw GearDoublyLinkedListException.nodeNotOwnedByThisList
         }
         
         if node === head {
-            
             return removeHead()
         }
         
         if node === tail {
-            
             return removeTail()
         }
         
         guard let previousNode = node.previous, let nextNode = node.next else {
-            
             return false
         }
         
@@ -354,13 +340,11 @@ extension GearDoublyLinkedListImplementation {
         
         // if the list is empty
         guard let _ = tail else {
-            
             return false
         }
         
         // If the list contains only one element.
         if head === tail {
-            
             head = NodeType()
             tail = nil
             return true
@@ -368,7 +352,6 @@ extension GearDoublyLinkedListImplementation {
         
         // If the list contains multiple elements.
         guard let newHead = head.next else {
-            
             return false
         }
         
@@ -384,13 +367,11 @@ extension GearDoublyLinkedListImplementation {
         
         // if the list is empty
         guard let _ = tail else {
-            
             return false
         }
         
         // If the list contains only one element
         if head === tail {
-            
             head = NodeType()
             tail = nil
             return true
@@ -398,7 +379,6 @@ extension GearDoublyLinkedListImplementation {
         
         // If the list contains multiple elements
         guard let newTail = tail?.previous else {
-            
             return false
         }
         
@@ -413,7 +393,6 @@ extension GearDoublyLinkedListImplementation {
     func clear() {
         
         guard let _ = tail else {
-            
             return
         }
         
@@ -444,9 +423,9 @@ extension GearDoublyLinkedListImplementation : Sequence {
     /// Generate the sequence from the list.
     func makeIterator() -> AnyIterator<Element> {
         
-        var current : GearDoublyLinkedList.NodeType? = head
-        
-        return AnyIterator {
+        var current : GearDoublyLinkedList<Element>.NodeType? = head
+
+        return AnyIterator<Element> {
             
             while (current != nil) {
                 
@@ -505,7 +484,6 @@ public struct GearDoublyLinkedList<Element> {
         var generator = s.makeIterator()
         
         while let nextElement = generator.next() {
-            
             _ = append(nextElement as! Element)
         }
     }
@@ -519,13 +497,11 @@ extension GearDoublyLinkedList {
     
     /// Reference on the first element of the list.
     public fileprivate(set) var head: NodeType {
-        
         get {
             return implementation.head
         }
         
         set {
-            
             implementation.head = newValue
         }
     }
@@ -537,32 +513,27 @@ extension GearDoublyLinkedList {
         }
         
         set {
-            
             implementation.tail = newValue
         }
     }
     
     /// Value contained in the first (head) node.  Nil for an empty list.
     public var firstValue: Element? {
-        
         return head.element
     }
     
     /// Value contained in the last (tail) node.  Nil for an empty list.
     public var lastValue: Element? {
-        
         return tail?.element
     }
     
     /// Whether the list is empty.  Returns false if the list contains at least 1 value.
     public var isEmpty: Bool {
-        
         return count == 0
     }
     
     /// Number of elements in the list.
     public var count: Int {
-        
         return implementation.count
     }
 }
@@ -579,7 +550,6 @@ extension GearDoublyLinkedList {
     ///
     /// - returns: A Node containing the element that has just been added.
     public mutating func insertHead(_ element: Element) -> NodeType {
-        
         ensureUnique()
         return implementation.insertHead(element)
     }
@@ -590,7 +560,6 @@ extension GearDoublyLinkedList {
     ///
     /// - returns: A Node containing the element that has just been added.
     public mutating func append(_ element: Element) -> NodeType {
-        
         ensureUnique()
         return implementation.append(element)
     }
@@ -603,7 +572,6 @@ extension GearDoublyLinkedList {
     /// - returns: A Node containing the element that has just been added.
     /// Nil if the operation failed.
     public mutating func insertAfter(_ node: NodeType, element: Element) throws -> NodeType? {
-        
         ensureUnique()
         return try implementation.insertAfter(node, element: element)
         
@@ -617,7 +585,6 @@ extension GearDoublyLinkedList {
     /// - returns: A Node containing the element that has just been added.
     /// Nil if the operation failed.
     public mutating func insertBefore(_ node: NodeType, element: Element) throws -> NodeType? {
-        
         ensureUnique()
         return try implementation.insertBefore(node, element: element)
     }
@@ -637,7 +604,6 @@ extension GearDoublyLinkedList where Element: Comparable {
     /// - returns: A Node containing the element that has just been added.
     /// Nil if the list contains no such node.
     public func firstNodeOfValue(_ element: Element) -> NodeType? {
-        
         return implementation.firstNodeOfValue(element)
     }
     
@@ -649,7 +615,6 @@ extension GearDoublyLinkedList where Element: Comparable {
     /// - returns: A Node containing the element that has just been added.
     /// Nil if the list contains no such node.
     public func lastNodeOfValue(_ element: Element) -> NodeType? {
-        
         return implementation.lastNodeOfValue(element)
     }
     
@@ -664,7 +629,6 @@ extension GearDoublyLinkedList where Element: Comparable {
     public mutating func removeFirstNodeOfValue(_ element: Element) -> Bool {
         
         guard let node = firstNodeOfValue(element) else {
-            
             return false
         }
         
@@ -681,7 +645,6 @@ extension GearDoublyLinkedList where Element: Comparable {
     public mutating func removeLastNodeOfValue(_ element: Element) -> Bool {
         
         guard let node = lastNodeOfValue(element) else {
-            
             return false
         }
         
@@ -694,7 +657,6 @@ extension GearDoublyLinkedList where Element: Comparable {
     ///
     /// - returns: True if the list contains the element, false otherwise.
     public func contains(_ element: Element) -> Bool {
-        
         return firstNodeOfValue(element) != nil
     }
 }
@@ -711,7 +673,6 @@ extension GearDoublyLinkedList {
     ///
     /// - returns: True if the node could be removed, false otherwise.
     public mutating func removeNode(_ node: NodeType) throws -> Bool {
-        
         ensureUnique()
         return try implementation.removeNode(node)
     }
@@ -720,7 +681,6 @@ extension GearDoublyLinkedList {
     ///
     /// - returns: True if the operation succeeds, false otherwise.
     public mutating func removeHead() -> Bool {
-        
         ensureUnique()
         return implementation.removeHead()
         
@@ -730,7 +690,6 @@ extension GearDoublyLinkedList {
     ///
     /// - returns: True if the operation succeeds, false otherwise.
     public mutating func removeTail() -> Bool {
-        
         ensureUnique()
         return implementation.removeTail()
     }
@@ -739,7 +698,6 @@ extension GearDoublyLinkedList {
     /// Clear the list by removing all nodes.
     /// We must remove all references here to make sure memory is properly de-allocated.
     public mutating func clear() {
-        
         ensureUnique()
         implementation.clear()
     }
@@ -756,7 +714,6 @@ extension GearDoublyLinkedList : Sequence {
     ///
     /// - returns: The generator that builds the sequence.
     public func makeIterator() -> AnyIterator<Element> {
-        
         return implementation.makeIterator()
     }
 }
