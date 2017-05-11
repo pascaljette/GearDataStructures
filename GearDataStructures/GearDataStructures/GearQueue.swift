@@ -207,7 +207,6 @@ extension GearQueueImplementation {
             while (current != nil) {
                 
                 if let currentInstance = current {
-                    
                     current = current?.next
                     return currentInstance.element
                 }
@@ -300,14 +299,12 @@ extension GearQueue {
     ///
     /// - returns: Value of the first element in the queue, nil if the queue is empty.
     public func peek() -> Element? {
-        
         return implementation.peek()
     }
     
     /// Delete all the nodes in the queue.  Note if you have references on the elements
     /// inside the queue itself, they will not be deleted.
     public mutating func clear() {
-        
         ensureUnique()
         return implementation.clear()
     }
@@ -321,13 +318,11 @@ extension GearQueue {
     
     /// Returns the number of elements in the queue.
     public var count: Int {
-        
         return implementation.count
     }
     
     /// Returns true for an empty queue (count == 0) and false otherwise.
     public var isEmpty: Bool {
-        
         return count == 0
     }
 }
@@ -342,7 +337,6 @@ extension GearQueue : Sequence {
     ///
     /// - returns: The generator that builds the sequence.
     public func makeIterator() -> AnyIterator<Element> {
-        
         return implementation.generate()
     }
 }

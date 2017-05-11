@@ -41,7 +41,7 @@ extension GearQueueTests {
     
     func testInsertArrayPerformance() {
         
-        let numberOfElements = 10000
+        let numberOfElements = 100000
         
         measure {
             
@@ -56,7 +56,7 @@ extension GearQueueTests {
     
     func testInsertListPerformance() {
         
-        let numberOfElements = 10000
+        let numberOfElements = 100000
         
         measure {
             
@@ -65,6 +65,20 @@ extension GearQueueTests {
             for i in 0..<numberOfElements {
                 queue.append(i)
             }
+        }
+    }
+    
+    func testMapQueueToArray() {
+        
+        var queue = GearQueue<Int>()
+        queue.append(1)
+        queue.append(2)
+        queue.append(3)
+        
+        let array = queue.map { $0 }
+        
+        array.enumerated().forEach { (offset, value) in
+            XCTAssertEqual(offset + 1, value)
         }
     }
 }
